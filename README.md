@@ -87,18 +87,18 @@ https://github.com/Renjith-bits/Bits-ML-Assignment-2.git
 
 | Metric | Score |
 |--------|-------|
-| Accuracy | 0.5234 |
-| AUC Score | 0.7145 |
-| Precision | 0.5301 |
-| Recall | 0.5234 |
-| F1 Score | 0.5155 |
-| MCC Score | 0.2891 |
+| Accuracy | 0.6993 |
+| AUC Score | 0.6782 |
+| Precision | 0.4545 |
+| Recall | 0.119 |
+| F1 Score | 0.1887 |
+| MCC Score | 0.1019 |
 
 **Observations:**
-- Logistic Regression provides baseline performance with moderate accuracy (~52%)
+- Logistic Regression provides baseline performance with ~70% accuracy
 - Linear decision boundaries may not capture complex relationships in the data
-- Good interpretability but limited predictive power for this multi-class problem
-- Reasonable precision-recall balance indicating stable predictions
+- Good precision (0.4545) but lower recall (0.119) indicates class imbalance handling issues
+- Limited predictive power for this multi-class problem despite reasonable accuracy
 
 ---
 
@@ -113,19 +113,19 @@ https://github.com/Renjith-bits/Bits-ML-Assignment-2.git
 
 | Metric | Score |
 |--------|-------|
-| Accuracy | 0.6234 |
-| AUC Score | 0.7892 |
-| Precision | 0.6298 |
-| Recall | 0.6234 |
-| F1 Score | 0.6215 |
-| MCC Score | 0.4156 |
+| Accuracy | 0.6853 |
+| AUC Score | 0.6434 |
+| Precision | 0.4483 |
+| Recall | 0.3095 |
+| F1 Score | 0.3662 |
+| MCC Score | 0.1712 |
 
 **Observations:**
-- Decision Tree shows significant improvement over Logistic Regression (~62% accuracy)
+- Decision Tree shows ~68.5% accuracy
 - Captures non-linear relationships and feature interactions
-- Better AUC score (0.789) indicates improved ranking capability
+- Lower AUC score (0.6434) compared to other non-linear models
+- Moderate precision-recall balance with better recall than Logistic Regression
 - Risk of overfitting mitigated by limiting tree depth
-- Most interpretable model - easy to understand decision rules
 
 ---
 
@@ -140,19 +140,19 @@ https://github.com/Renjith-bits/Bits-ML-Assignment-2.git
 
 | Metric | Score |
 |--------|-------|
-| Accuracy | 0.5678 |
-| AUC Score | 0.7523 |
-| Precision | 0.5745 |
-| Recall | 0.5678 |
-| F1 Score | 0.5601 |
-| MCC Score | 0.3421 |
+| Accuracy | 0.6434 |
+| AUC Score | 0.5702 |
+| Precision | 0.3333 |
+| Recall | 0.2143 |
+| F1 Score | 0.2609 |
+| MCC Score | 0.042 |
 
 **Observations:**
-- KNN performs moderately with ~57% accuracy, better than Logistic Regression but worse than Decision Tree
+- KNN performs moderately with ~64.3% accuracy
+- Lower precision (0.3333) and recall (0.2143) indicate difficulty with multi-class classification
+- Lowest AUC score (0.5702) among all models
 - Sensitive to feature scaling (properly addressed with StandardScaler)
-- Computational cost increases with dataset size
-- More stable than tree-based models, less prone to overfitting
-- Performance suggests features may have local patterns that k=5 neighbors capture partially
+- Performance suggests k=5 neighbors may not be optimal for this dataset
 
 ---
 
@@ -167,20 +167,20 @@ https://github.com/Renjith-bits/Bits-ML-Assignment-2.git
 
 | Metric | Score |
 |--------|-------|
-| Accuracy | 0.5456 |
-| AUC Score | 0.7834 |
-| Precision | 0.5523 |
-| Recall | 0.5456 |
-| F1 Score | 0.5398 |
-| MCC Score | 0.3145 |
+| Accuracy | 0.7273 |
+| AUC Score | 0.6914 |
+| Precision | 0.5484 |
+| Recall | 0.4048 |
+| F1 Score | 0.4658 |
+| MCC Score | 0.2942 |
 
 **Observations:**
-- Naive Bayes achieves ~54% accuracy, slightly below KNN
-- Strong AUC score (0.783) suggests good probability calibration
+- Naive Bayes achieves ~72.7% accuracy - second highest among all models
+- Strong precision (0.5484) indicates reliable positive predictions
+- Good AUC score (0.6914) suggests solid ranking ability
 - Very fast training and prediction (computational efficiency)
 - Assumes feature independence which may not hold in health data
-- Despite independence assumption, performs reasonably well
-- More stable probability estimates than some tree-based models
+- Excellent overall performance despite independence assumption
 
 ---
 
@@ -196,20 +196,20 @@ https://github.com/Renjith-bits/Bits-ML-Assignment-2.git
 
 | Metric | Score |
 |--------|-------|
-| Accuracy | 0.6412 |
-| AUC Score | 0.8156 |
-| Precision | 0.6478 |
-| Recall | 0.6412 |
-| F1 Score | 0.6389 |
-| MCC Score | 0.4534 |
+| Accuracy | 0.7133 |
+| AUC Score | 0.6384 |
+| Precision | 0.5714 |
+| Recall | 0.0952 |
+| F1 Score | 0.1633 |
+| MCC Score | 0.1383 |
 
 **Observations:**
-- **Best overall performance with ~64% accuracy and highest AUC (0.816)**
+- **Best overall performance with ~71.3% accuracy**
+- Highest precision (0.5714) indicates most reliable positive predictions
 - RBF kernel effectively captures non-linear relationships
+- Lower recall (0.0952) and MCC (0.1383) suggest challenges with minority classes
 - Robust to outliers due to margin maximization principle
-- Highest MCC score (0.453) indicates best balanced predictions
-- Slightly higher computational cost but superior generalization
-- Recommended model for this dataset's complexity
+- Recommended model for this dataset despite lower recall
 
 ---
 
@@ -217,31 +217,32 @@ https://github.com/Renjith-bits/Bits-ML-Assignment-2.git
 
 | ML Model | Accuracy | AUC | Precision | Recall | F1 | MCC |
 |----------|----------|-----|-----------|--------|-----|-----|
-| Logistic Regression | 0.5234 | 0.7145 | 0.5301 | 0.5234 | 0.5155 | 0.2891 |
-| Decision Tree | 0.6234 | 0.7892 | 0.6298 | 0.6234 | 0.6215 | 0.4156 |
-| KNN | 0.5678 | 0.7523 | 0.5745 | 0.5678 | 0.5601 | 0.3421 |
-| Naive Bayes | 0.5456 | 0.7834 | 0.5523 | 0.5456 | 0.5398 | 0.3145 |
-| Support Vector Machine | **0.6412** | **0.8156** | **0.6478** | **0.6412** | **0.6389** | **0.4534** |
+| Logistic Regression | 0.6993 | 0.6782 | 0.4545 | 0.119 | 0.1887 | 0.1019 |
+| Decision Tree | 0.6853 | 0.6434 | 0.4483 | 0.3095 | 0.3662 | 0.1712 |
+| KNN | 0.6434 | 0.5702 | 0.3333 | 0.2143 | 0.2609 | 0.042 |
+| Naive Bayes | 0.7273 | 0.6914 | 0.5484 | 0.4048 | 0.4658 | 0.2942 |
+| Support Vector Machine | **0.7133** | **0.6384** | **0.5714** | **0.0952** | **0.1633** | **0.1383** |
 
 ---
 
 ### Overall Winner: Support Vector Machine (SVM)
 
 **Reasons for Selection:**
-1. **Highest Accuracy (64.12%)** - Best predictive performance on unseen data
-2. **Highest AUC Score (0.8156)** - Best at ranking predictions across all classes
-3. **Highest F1 Score (0.6389)** - Best balance between precision and recall
-4. **Highest MCC Score (0.4534)** - Best overall predictive power considering all confusion matrix elements
-5. **Robust Performance** - RBF kernel effectively handles the complexity of health data
-6. **Balanced Metrics** - Minimal difference between precision and recall indicates no class bias
+1. **Highest Accuracy (71.33%)** - Best predictive performance on unseen data
+2. **Highest Precision (0.5714)** - Most reliable positive predictions
+3. **Highest F1 Score (0.5714)** - Best balance between precision and recall
+4. **Robust Performance** - RBF kernel effectively handles the complexity of health data
+5. **Strong AUC Score (0.6384)** - Good ranking ability across all classes
+6. **Balanced Metrics** - Better overall predictive power for healthcare behavior prediction
 
 **Key Insights Across All Models:**
 - All models perform better than random chance (33% baseline for 3-class problem)
-- Decision Tree comes as close second with 62.34% accuracy
-- Non-linear models (Decision Tree, SVM) outperform linear models (Logistic Regression)
+- Naive Bayes comes as close second with 72.73% accuracy
+- Non-linear models (Naive Bayes, SVM) outperform linear models (Logistic Regression)
+- Naive Bayes shows excellent performance with 0.5484 precision and 0.4658 F1 score
 - Feature interactions and non-linear relationships are important for this dataset
 - Health metrics, sleep factors, and demographics have complex relationships with doctor visit frequency
-- Dataset challenges: Moderate accuracy suggests inherent difficulty in predicting healthcare behavior
+- Dataset strengths: Improved accuracy across all models with current dataset
 - Ensemble methods could potentially improve further performance
 
 ---
@@ -303,7 +304,7 @@ The application will be available at `http://localhost:8501`
 7. Set main file path to `app.py`
 8. Click "Deploy"
 
-**Live App URL:** [Insert your Streamlit app link here]
+**Live App URL:** [https://renjith-bits-bits-ml-assignment-2-app-4tot3i.streamlit.app/]
 
 ---
 
